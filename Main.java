@@ -1,5 +1,6 @@
 package io.github.some_example_name;
-
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,13 +11,18 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class Main extends ApplicationAdapter {
     private SpriteBatch batch;
     private Texture image;
-    private Cell Cell;
+    private Player p;
+
     ShapeRenderer sr;
     private Cell[][] cells = new Cell [10][10];
 
     @Override
     public void create() {
+        sr = new ShapeRenderer();
         batch = new SpriteBatch();
+
+        p = new Player(32.5f, 32.5f, 45, 45);
+
         int[] xPositions = {10, 110, 210, 310, 410, 510, 610, 710, 810, 910};
         int[] yPositions = {10, 110, 210, 310, 410, 510, 610, 710, 810, 910};
         for(int i = 0; i<xPositions.length; i++){
@@ -25,15 +31,41 @@ public class Main extends ApplicationAdapter {
                 cells[i][j] = c;
             }
         }
-
     }
 
     @Override
     public void render() {
-        ScreenUtils.clear(0, 0, 0, 0);
+        ScreenUtils.clear(0, 0, 0, 1);
         sr.begin(ShapeRenderer.ShapeType.Filled);
-        for(int i = 0; cells.length; i++)
-        batch.end();
+
+        for(int i = 0; i< cells.length; i++){
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j].draw(sr);
+            }
+        }
+        p.draw(sr);
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)||Gdx.input.isKeyJustPressed(Input.Keys.W)){
+            if(p.getyPlayer()<900){
+                p.setyPlayer(p.getyPlayer()+100);
+            }
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)||Gdx.input.isKeyJustPressed(Input.Keys.S)){
+            if(p.getyPlayer()>100){
+                p.setyPlayer(p.getyPlayer()-100);
+            }
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)||Gdx.input.isKeyJustPressed(Input.Keys.A)){
+            if(p.getxPlayer()>100){
+                p.setxPlayer(p.getxPlayer()-100);
+            }
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)||Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+            if(p.getxPlayer()<900){
+                p.setxPlayer(p.getxPlayer()+100);
+            }
+        }
+        sr.end();
     }
 
     @Override

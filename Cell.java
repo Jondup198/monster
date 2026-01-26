@@ -1,6 +1,5 @@
 package io.github.some_example_name;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.Color;
 
 public class Cell {
     private int xCell;
@@ -13,7 +12,6 @@ public class Cell {
         this.yCell = cellY;
         this.wCell = cellW;
         this.hCell = cellH;
-
     }
 
     public int getxCell() {return xCell;}
@@ -26,8 +24,7 @@ public class Cell {
     public void sethCell(int hCell) {this.hCell = hCell;}
 
     public void draw(ShapeRenderer sr){
+        sr.setColor(1,1,1,1);
         sr.rect(xCell, yCell, wCell, hCell);
-        sr.setColor(23,46,78,90);
-
     }
 }
