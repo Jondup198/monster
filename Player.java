@@ -25,7 +25,7 @@ public class Player {
     public void sethPlayer(int hPlayer) {this.hPlayer = hPlayer;}
 
     public void draw(ShapeRenderer sr){
-        sr.setColor(1, 0, 0, 1);
+        sr.setColor(0, 1, 0, 1);
         sr.rect(xPlayer, yPlayer, wPlayer, hPlayer);
     }
 }

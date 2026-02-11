@@ -26,5 +26,6 @@ public class Cell {
     public void draw(ShapeRenderer sr){
         sr.setColor(1,1,1,1);
         sr.rect(xCell, yCell, wCell, hCell);
+
     }
 }
