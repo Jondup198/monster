@@ -8,11 +8,13 @@ public class Monster {
     private float wMonst;
     private float hMonst;
 
+
     public Monster(float monstX, float monstY, float monstW, float monstH) {
         this.xMonst = monstX;
         this.yMonst = monstY;
         this.wMonst = monstW;
         this.hMonst = monstH;
+
     }
 
     public float getxMonst() {return xMonst;}
